@@ -36,22 +36,35 @@ struct OnboardingView: View {
             Spacer()
 
             HStack {
-                 
-                Spacer()
-                Button(currentIndex == totalPages - 1 ? "Start" : "Next") {
+//                Button(action: {
+//                    hasSeenOnboarding = true
+//                }) {
+//                    Text("Skip")
+//                        .font(.system(size: 18, weight: .bold))
+//                        .foregroundColor(.white)
+//                        .frame(maxWidth: .infinity)
+//                        .padding(.vertical, 14)
+//                        .background(Color(red: 0.4235, green: 0.8078, blue: 1.0))
+//                        .cornerRadius(30)
+//                }
+//                
+//                Spacer()
+//                
+                Button(action: {
                     if currentIndex < totalPages - 1 {
                         currentIndex += 1
                     } else {
                         hasSeenOnboarding = true
                     }
+                }) {
+                    Text(currentIndex == totalPages - 1 ? "Start" : "Next")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Color(red: 0.4235, green: 0.8078, blue: 1.0))
+                        .cornerRadius(30)
                 }
-                .font(.system(size: 18, weight: .bold))
-                                   .foregroundColor(.white)
-                                   .padding(.vertical, 14)
-                                   .frame(maxWidth: .infinity)
-                                   .background(Color(red: 0.4235, green: 0.8078, blue: 1.0))
-                                   .cornerRadius(30)
-                                   .padding(.horizontal, 32)
             }
             .padding(.horizontal, 30)
             .padding(.bottom, 40)

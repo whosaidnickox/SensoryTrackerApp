@@ -135,6 +135,7 @@ struct EmotionTrackerView: View {
                            Spacer()
                            Text(emotion.description)
                                .font(.title)
+                               .minimumScaleFactor(0.35)
                                .fontWeight(.bold)
                                .foregroundColor(.white)
                             Spacer()
@@ -225,6 +226,7 @@ struct EmotionTrackerView: View {
                 Spacer()
             }
             .padding()
+            .toolbar(.hidden, for: .tabBar)
             .background(
                 LinearGradient(
                     gradient: Gradient(colors: [

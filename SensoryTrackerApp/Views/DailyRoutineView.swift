@@ -108,6 +108,8 @@ struct DailyRoutineView: View {
             )
             .ignoresSafeArea()
         )
+         .toolbar(.hidden, for: .tabBar)
+
     }
 }
  

@@ -104,22 +104,15 @@ struct TherapeuticColoringView: View {
                         GridItem(.flexible(), spacing: 16)
                     ], spacing: 16) {
                         ForEach(currentCards) { card in
-                            NavigationLink(destination: 
-                                ColoringDetailView(card: card)
-                                    .onAppear { isTabBarVisible = false }
-                                    .onDisappear { 
-                                        isTabBarVisible = true
-                                        loadSavedWorks()
-                                    }
-                            ) {
-                                ColoringCardView(card: card, savedImage: savedWorks["colored_\(card.imageName)"])
-                            }
+                            ColoringCardView(card: card, savedImage: savedWorks["colored_\(card.imageName)"], isTabBarVisible: $isTabBarVisible)
                         }
                     }
                     .padding()
                 }
                 .padding(.bottom, 60)
             }
+            .onAppear { isTabBarVisible = true }
+            .toolbar(.hidden, for: .tabBar)
             .background(
                 LinearGradient(
                     gradient: Gradient(colors: [
@@ -172,6 +165,7 @@ struct CategoryButton: View {
 struct ColoringCardView: View {
     let card: ColoringCardModel
     let savedImage: UIImage?
+    @Binding var isTabBarVisible: Bool
     
     var body: some View {
         VStack {
@@ -187,7 +181,11 @@ struct ColoringCardView: View {
                     .frame(height: 150)
             }
  
-            Button(action: {}) {
+            NavigationLink(destination: 
+                ColoringDetailView(card: card)
+                    .onAppear { isTabBarVisible = false }
+                    .onDisappear { isTabBarVisible = true }
+            ) {
                 Text("Start")
                     .font(.system(size: 16, weight: .medium))
                     .foregroundColor(.white)

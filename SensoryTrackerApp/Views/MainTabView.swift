@@ -56,17 +56,19 @@ struct MainTabView: View {
     @State private var showingStatistics = false
     @State private var isTabBarVisible = true
     
+
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
                 TherapeuticColoringView(isTabBarVisible: $isTabBarVisible)
                     .tag(Tab.coloring)
-                
+ 
                 SensoryOverloadView()
                     .tag(Tab.sensory)
-                
+ 
                 DailyRoutineView()
                     .tag(Tab.stats)
+ 
                 
                 EmotionTrackerView()
                     .tag(Tab.emotions)

@@ -13,7 +13,8 @@ struct OnboardingPage: View {
         switch index {
         case 0: return "Colouring pictures"
         case 1: return "Centre assistant"
-        case 2: return "Emotion tracker"
+        case 2: return "Daily routine"
+        case 3: return "Emotion tracker"
         default: return ""
         }
     }
@@ -23,18 +24,18 @@ struct OnboardingPage: View {
         case 0:
             return ["Colouring"]
         case 1:
-            return ["Pulsed", "Light", "Texture"]
+            return ["Message"]
         case 2:
-            return ["Happy", "Saddly", "Angry"]
-        
-          
+            return ["Light"]
+        case 3:
+            return ["Angry"]
         default:
             return []
         }
     }
     
     var baseImageSize: CGFloat {
-        horizontalSizeClass == .regular ? 100 : 100
+        horizontalSizeClass == .regular ? 200 : 100
     }
 
     var body: some View {
@@ -43,33 +44,35 @@ struct OnboardingPage: View {
 
             Text(title)
                 .font(.largeTitle)
+                .lineLimit(2) // Максимум 2 строки
+                .minimumScaleFactor(0.35)
                 .foregroundStyle(Color.white)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
 
-            if index == 0 {
+//            if index == 0 {
                 Image(images.first ?? "")
                     .resizable()
                     .scaledToFit()
                     .frame(width: baseImageSize * 3, height: baseImageSize * 3)
                     .foregroundColor(.white)
                     .padding()
-            } else {
-                VStack(spacing: 4) { // минимальный отступ между изображениями
-                    ForEach(images, id: \.self) { imageName in
-                        HStack{
-                            Image(imageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: imageFrameSize)
-                                .foregroundColor(.white)
-                        }
-                        
-                    }
-                }
-                .padding(.horizontal)
-            }
+//            } else {
+//                VStack(spacing: 4) { // минимальный отступ между изображениями
+//                    ForEach(images, id: \.self) { imageName in
+//                        HStack{
+//                            Image(imageName)
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(height: imageFrameSize)
+//                                .foregroundColor(.white)
+//                        }
+//                        
+//                    }
+//                }
+//                .padding(.horizontal)
+//            }
 
             Text(subtitle)
                 .font(.largeTitle)
@@ -86,7 +89,7 @@ struct OnboardingPage: View {
         case 1, 2:
             return baseImageSize  // поменьше
         case 3:
-            return baseImageSize*2       // стандартный размер
+            return baseImageSize       // стандартный размер
         default:
             return baseImageSize
         }

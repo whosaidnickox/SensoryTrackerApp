@@ -2,6 +2,9 @@ import SwiftUI
 
 @main
 struct SensoryTrackerApp: App {
+//    init() {
+//           UITabBar.appearance().isHidden = true
+//      }
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {

@@ -67,7 +67,7 @@ struct SensoryOverloadView: View {
                     .cornerRadius(42)
             }
             .padding(.horizontal)
-            .padding(.bottom, 50)
+            .padding(.bottom, 100)
             
 //            // Bottom Tab Bar
 //            HStack(spacing: 40) {
@@ -86,6 +86,8 @@ struct SensoryOverloadView: View {
         .fullScreenCover(isPresented: $showingStatistics) {
             StatisticsView(isPresented: $showingStatistics)
         }
+        .toolbar(.hidden, for: .tabBar)
+
         .background(
             LinearGradient(
                 gradient: Gradient(colors: [

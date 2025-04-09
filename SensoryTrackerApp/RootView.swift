@@ -6,7 +6,7 @@ struct RootView: View {
     var body: some View {
         if hasSeenOnboarding {
             MainTabView()
-        } else {
+         } else {
             OnboardingView()
         }
     }
