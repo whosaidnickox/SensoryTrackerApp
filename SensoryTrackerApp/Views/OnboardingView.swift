@@ -80,6 +80,6 @@ struct OnboardingView: View {
             )
             .ignoresSafeArea()
         )
-        .adpeiwqozpr()
+        
     }
 }
